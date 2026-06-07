@@ -19,6 +19,7 @@ menu_setup() {
         echo "========================================="
         echo "1. Basic Termux Setup"
         echo "2. Install Platform Tools"
+        echo "3. Termux Setup Storage"
         echo "9. Back to Main Menu"
         echo "0. Exit Tool"
         echo "========================================="
