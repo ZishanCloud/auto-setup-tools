@@ -144,7 +144,7 @@ menu_fastboot() {
                 # --- ADD COMMANDS BELOW ---
     
                 # ৩ সেকেন্ডের জন্য কমান্ডটি রান করবে
-                timeout 10s termux-fastboot devices
+                timeout 15s termux-fastboot devices
                 
                 # যদি ৩ সেকেন্ড পার হয়ে যায় এবং কমান্ড আটকে থাকে (Timeout Error 124)
                 if [ $? -eq 124 ]; then
@@ -161,7 +161,7 @@ menu_fastboot() {
                 # --- ADD COMMANDS BELOW ---
     
                 # ৩ সেকেন্ডের জন্য কমান্ডটি রান করবে
-                timeout 10s termux-fastboot reboot
+                timeout 15s termux-fastboot reboot
                 
                 # যদি ৩ সেকেন্ড পার হয়ে যায় এবং কমান্ড আটকে থাকে (Timeout Error 124)
                 if [ $? -eq 124 ]; then
@@ -186,7 +186,7 @@ menu_fastboot() {
                     echo "[*] Checking for connected fastboot device (waiting 3s)..."
                     
                     # ২. শুধু ডিভাইস চেক করার জন্য ৩ সেকেন্ড সময় নেবে (ফ্ল্যাশের জন্য নয়)
-                    timeout 10s termux-fastboot devices > /dev/null 2>&1
+                    timeout 15s termux-fastboot devices > /dev/null 2>&1
                     
                     if [ $? -eq 124 ]; then
                         # ৩ সেকেন্ডে ডিভাইস না পেলে আটকে না থেকে এরর দেখাবে
@@ -226,7 +226,7 @@ menu_fastboot() {
                     echo "[*] Checking for connected fastboot device (waiting 3s)..."
                     
                     # ২. শুধু ডিভাইস চেক করার জন্য ৩ সেকেন্ড সময় নেবে (ফ্ল্যাশের জন্য নয়)
-                    timeout 10s termux-fastboot devices > /dev/null 2>&1
+                    timeout 15s termux-fastboot devices > /dev/null 2>&1
                     
                     if [ $? -eq 124 ]; then
                         # ৩ সেকেন্ডে ডিভাইস না পেলে আটকে না থেকে এরর দেখাবে
