@@ -17,8 +17,8 @@ menu_setup() {
         echo "========================================="
         echo "             [ SETUP MENU ]              "
         echo "========================================="
-        echo "1. Basic Termux Setup (Update & Upgrade)"
-        echo "2. Install Android Tools (ADB & Fastboot)"
+        echo "1. Basic Termux Setup"
+        echo "2. Install Platform Tools"
         echo "9. Back to Main Menu"
         echo "0. Exit Tool"
         echo "========================================="
@@ -39,6 +39,15 @@ menu_setup() {
                 echo "[*] Installing Android Tools..."
                 # --- ADD COMMANDS BELOW ---
                 curl -s https://raw.githubusercontent.com/nohajc/termux-adb/master/install.sh | bash
+                # --- ADD COMMANDS ABOVE ---
+                echo "[✔] Done!"
+                pause_menu
+                ;;
+            3)
+                clear
+                echo "[*] Termux Setup Storage..."
+                # --- ADD COMMANDS BELOW ---
+                termux-setup-storage
                 # --- ADD COMMANDS ABOVE ---
                 echo "[✔] Done!"
                 pause_menu
@@ -131,7 +140,16 @@ menu_fastboot() {
                 clear
                 echo "[*] Checking connected Fastboot devices..."
                 # --- ADD COMMANDS BELOW ---
-                termux-fastboot devices
+    
+                # ৩ সেকেন্ডের জন্য কমান্ডটি রান করবে
+                timeout 3s termux-fastboot devices
+                
+                # যদি ৩ সেকেন্ড পার হয়ে যায় এবং কমান্ড আটকে থাকে (Timeout Error 124)
+                if [ $? -eq 124 ]; then
+                    echo ""
+                    echo "[!] No fastboot device detected or connection timed out!"
+                fi
+                
                 # --- ADD COMMANDS ABOVE ---
                 pause_menu
                 ;;
