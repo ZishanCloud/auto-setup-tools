@@ -130,6 +130,7 @@ menu_fastboot() {
         echo "1. Check Fastboot Devices"
         echo "2. Reboot to System"
         echo "3. Flash boot"
+        echo "3. Flash init_boot"
         echo "9. Back to Main Menu"
         echo "0. Exit Tool"
         echo "========================================="
@@ -205,6 +206,46 @@ menu_fastboot() {
                     echo ""
                     echo "[!] Error: mboot.img file not found in Downloads folder!"
                     echo "[!] Please put the mboot.img file in your Downloads folder and try again."
+                fi
+                
+                # --- ADD COMMANDS ABOVE ---
+                pause_menu
+                ;;
+            4)
+                clear
+                echo "[*] Flashing init_boot Image..."
+                # --- ADD COMMANDS BELOW ---
+                
+                # ফাইলের লোকেশন ভ্যারিয়েবল
+                INIT_BOOT_IMG="/sdcard/Download/minit_boot.img"
+                
+                # ১. প্রথমে চেক করবে ফাইলটি আছে কি না
+                if [ -f "$INIT_BOOT_IMG" ]; then
+                    echo "[✔] File found: $INIT_BOOT_IMG"
+                    echo "[*] Checking for connected fastboot device (waiting 3s)..."
+                    
+                    # ২. শুধু ডিভাইস চেক করার জন্য ৩ সেকেন্ড সময় নেবে (ফ্ল্যাশের জন্য নয়)
+                    timeout 3s termux-fastboot devices > /dev/null 2>&1
+                    
+                    if [ $? -eq 124 ]; then
+                        # ৩ সেকেন্ডে ডিভাইস না পেলে আটকে না থেকে এরর দেখাবে
+                        echo ""
+                        echo "[!] Error: No fastboot device detected!"
+                        echo "Please connect your phone in fastboot mode and try again."
+                    else
+                        # ৩. ডিভাইস পেলে কোনো টাইমআউট ছাড়া ফ্ল্যাশ করবে (যত সময় লাগুক)
+                        echo "[✔] Device detected!"
+                        echo "[*] Flashing in progress. Please do not disconnect..."
+                        
+                        termux-fastboot flash init_boot "$INIT_BOOT_IMG"
+                        
+                        echo "[✔] Flashing process finished!"
+                    fi
+                else
+                    # যদি Downloads ফোল্ডারে ফাইলটি না পাওয়া যায়
+                    echo ""
+                    echo "[!] Error: minit_boot.img file not found in Downloads folder!"
+                    echo "[!] Please put the minit_boot.img file in your Downloads folder and try again."
                 fi
                 
                 # --- ADD COMMANDS ABOVE ---
