@@ -130,7 +130,7 @@ menu_fastboot() {
         echo "1. Check Fastboot Devices"
         echo "2. Reboot to System"
         echo "3. Flash boot"
-        echo "3. Flash init_boot"
+        echo "4. Flash init_boot"
         echo "9. Back to Main Menu"
         echo "0. Exit Tool"
         echo "========================================="
