@@ -15,7 +15,7 @@ menu_setup() {
     while true; do
         clear
         echo "========================================="
-        echo "     [ SETUP MENU - Zishan Therapy ]     "
+        echo "       SETUP MENU - Zishan Therapy       "
         echo "========================================="
         echo "1. Basic Termux Setup"
         echo "2. Install Platform Tools"
@@ -71,7 +71,7 @@ menu_adb() {
     while true; do
         clear
         echo "========================================="
-        echo "      [ ADB MENU - Zishan Therapy ]      "
+        echo "        ADB MENU - Zishan Therapy        "
         echo "========================================="
         echo "1. Check ADB Devices"
         echo "2. Reboot to Recovery"
@@ -125,7 +125,7 @@ menu_fastboot() {
     while true; do
         clear
         echo "========================================="
-        echo "   [ FASTBOOT MENU - Zishan Therapy ]    "
+        echo "      FASTBOOT MENU - Zishan Therapy     "
         echo "========================================="
         echo "1. Check Fastboot Devices"
         echo "2. Reboot to System"
@@ -269,7 +269,7 @@ menu_fastboot() {
 while true; do
     clear
     echo "========================================="
-    echo "             Zishan Therapy               "
+    echo "             Zishan Therapy              "
     echo "========================================="
     echo "1. Setup Menu"
     echo "2. ADB Menu"
